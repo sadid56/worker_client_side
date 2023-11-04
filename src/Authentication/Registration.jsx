@@ -2,8 +2,14 @@
 import { Link } from "react-router-dom";
 import Navber from "../shared/Navber/Navber";
 import registerPng from "../assets/images/register.png";
+import { useContext } from "react";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Registration = () => {
+ const {createUser, profileUpdate} = useContext(AuthContext)
+
+
+
   const handleRegistration = (e) => {
     e.preventDefault();
     // const form = target.value;
@@ -12,6 +18,25 @@ const Registration = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     console.log(name, photo,email, password);
+
+    //create user with firebase
+    createUser(email, password)
+    .then(res => {
+        console.log(res.user);
+
+        //update profile
+        profileUpdate(name, photo)
+        .then(()=>{
+            alert('Registration success !')
+        })
+        .catch(error => {
+            console.log(error.message);
+        })
+        
+    })
+    .catch(error =>{
+        console.log(error.message);
+    })
   };
 
   return (

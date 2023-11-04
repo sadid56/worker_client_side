@@ -3,8 +3,23 @@ import Navber from "../shared/Navber/Navber";
 import loginPng from "../assets/images/login.png";
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa6";
+import { useContext } from "react";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Login = () => {
+    const {googleLogin, loginUser} = useContext(AuthContext)
+
+    //login login
+    const handleGoogleLogin = ()=>{
+        googleLogin()
+        .then(res => {
+            console.log(res.user)
+            alert('Google Login success')
+        })
+        .catch(error =>{
+            console.log(error.message);
+        })
+    }
 
     const handleLogin = e =>{
         e.preventDefault()
@@ -12,6 +27,14 @@ const Login = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
         console.log(email, password);
+
+        loginUser(email, password)
+        .then(()=>{
+            alert('login success')
+        })
+        .catch(error =>{
+            console.log(error.message);
+        })
     }
 
   return (
@@ -64,7 +87,7 @@ const Login = () => {
               </div>
             </form>
             <div className="px-7 pb-5">
-            <button className="btn btn-outline btn-success normal-case w-full text-xl font-medium"><FaGoogle/> Google Sign-in</button>
+            <button onClick={handleGoogleLogin} className="btn btn-outline btn-success normal-case w-full text-xl font-medium"><FaGoogle/> Google Sign-in</button>
             </div>
           </div>
         </div>

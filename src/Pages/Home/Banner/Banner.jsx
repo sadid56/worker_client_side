@@ -3,7 +3,7 @@ import heroPng from '../../../assets/images/hero.png'
 
 const Banner = () => {
     return ( 
-        <div className="bg-[#ecf2f0] h-[100vh]">
+        <div className="bg-[#ecf2f0]">
             <Navber/>
             <div className="hero max-w-6xl mx-auto">
   <div className="hero-content flex-col lg:flex-row-reverse">
