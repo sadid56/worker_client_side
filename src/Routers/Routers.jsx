@@ -7,6 +7,7 @@ import Error from "../shared/Error/Error";
 import JobsDetails from "../Components/JobsDetails/JobsDetails";
 import AddJob from "../Components/AddJob/AddJob";
 import MyPostedJobs from "../Components/MyPostedJobs/MyPostedJobs";
+import UpdateModal from "../Components/UpdateModal/UpdateModal";
 
 const Routers = createBrowserRouter([
     {
@@ -38,6 +39,11 @@ const Routers = createBrowserRouter([
             {
                 path: '/my-posted-job',
                 element: <MyPostedJobs/>
+            },
+            {
+                path: '/update-jobs/:id',
+                element: <UpdateModal/>,
+                loader: ({params})=>fetch(`http://localhost:5000/jobs/${params.id}`)
             }
         ]
     }

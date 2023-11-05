@@ -1,10 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Navber from "../../shared/Navber/Navber";
+// import UpdateModal from "../UpdateModal/UpdateModal";
+import { useNavigate } from "react-router-dom";
 
 const MyPostedJobs = () => {
   const { user } = useContext(AuthContext);
   const [jobs, setJobs] = useState([]);
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetch(`http://localhost:5000/jobs?email=${user?.email}`)
@@ -26,7 +29,7 @@ const MyPostedJobs = () => {
               <h2 className="text-[#005d45] text-3xl font-semibold">{job?.job_title}</h2>
               <h2 className="text-2xl font-semibold">Category: {job?.category}</h2>
               <p className="text-xl font-semibold">Deadline: {job?.deadline}</p>
-              <p className="text-gray-600 font-medium text-xl">Price Range: {job?.price_range}</p>
+              <p className="text-gray-600 font-medium text-xl">Price Range: {job?.minPrice} - {job?.maxPrice}</p>
               <p className="text-gray-400 font-medium">Eamil: {job?.email}</p>
               <p className="text-gray-400">{job?.short_description}</p>
             </div>
@@ -34,7 +37,7 @@ const MyPostedJobs = () => {
               <button className="btn btn-circle">
                 <i className="fa-solid fa-trash text-xl text-red-500"></i>
               </button>
-              <button className="btn btn-circle bg-[#005d45] hover:bg-[#104235] text-white text-xl font-medium rounded-full">
+              <button onClick={()=> navigate(`/update-jobs/${job?._id}`)} className="btn btn-circle bg-[#005d45] hover:bg-[#104235] text-white text-xl font-medium rounded-full">
                 <i className="fa-solid fa-pen-to-square"></i>
               </button>
             </div>

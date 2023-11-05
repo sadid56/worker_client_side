@@ -1,58 +1,55 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import Navber from "../../shared/Navber/Navber";
-import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { useLoaderData } from "react-router-dom";
 
-const AddJob = () => {
-    const {user} = useContext(AuthContext)
-    const [categorie , setCategorie] = useState('Web development')
+const UpdateModal = () => {
+    // const {user} = useContext(AuthContext)
+    const [categoris, setCategories] = useState('Web development')
+    const job = useLoaderData()
 
-
-
-
-    const handleAddJob = e =>{
+    const handleUpdate = e =>{
         e.preventDefault()
-        const email = e.target.email.value;
+        // const email = e.target.email.value;
         const job_title = e.target.job_title.value;
         const deadline = e.target.deadline.value;
         const short_description = e.target.short_description.value;
-        const category = categorie;
+        const category = categoris;
 
         const minPrice = e.target.minPrice.value;
         const maxPrice = e.target.maxPrice.value;
         // const price_range = minPrice + '-' + maxPrice
 
-        const addJob = {email, job_title, minPrice, maxPrice, deadline, short_description,category}
+        const UpdateJob = {job_title, minPrice, maxPrice, deadline, short_description,category}
         // console.log(addJob);
-        fetch('http://localhost:5000/jobs',{
-            method: 'post',
+        // console.log(addJob);
+        fetch(`http://localhost:5000/jobs/${job?._id}`, {
+            method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(addJob)
+            body: JSON.stringify(UpdateJob)
         })
         .then(res => res.json())
         .then(data => {
             console.log(data);
-            if(data.acknowledged){
-                alert('job added succes')
+            if(data.modifiedCount > 0){
+                alert('update success')
             }
         })
+      
     }
-
-    const handleCategorieSet = e =>{
-        setCategorie(e.target.value)
-        // console.log(e.target.value);
-        
+    const handleCategorieSet =e =>{
+        setCategories(e.target.value)
     }
     return ( 
         <div>
             <Navber/>
-             <div className="max-w-2xl mx-auto">
-             <form onSubmit={handleAddJob} className="card-body">
-            <h3 className="text-2xl font-bold text-center">Add Job</h3>
+            <div className="max-w-2xl mx-auto">
+             <form onSubmit={handleUpdate} className="card-body">
+            <h3 className="text-2xl font-bold text-center">Update Job</h3>
 
           <div className="flex justify-end">
-          <select onChange={handleCategorieSet} value={categorie} className="input input-bordered input-success w-fit" required>
+          <select onChange={handleCategorieSet} value={categoris} className="input input-bordered input-success w-fit" required>
                 <option value="Web development">Web development</option>
                 <option value="Digital marketing">Digital marketing</option>
                 <option value="Graphics design">Graphics design</option>
@@ -66,7 +63,8 @@ const AddJob = () => {
                 </label>
                 <input
                   name="email"
-                  defaultValue={user?.email}
+                  disabled
+                  defaultValue={job?.email}
                   required
                   type="email"
                   placeholder="Your Eamil"
@@ -80,6 +78,7 @@ const AddJob = () => {
                 <input
                 required
                   name="job_title"
+                  defaultValue={job?.job_title}
                   type="text"
                   placeholder="Job title"
                   className="input input-bordered input-success w-full max-w-xs"
@@ -91,6 +90,7 @@ const AddJob = () => {
                 </label>
                 <input
                   name="deadline"
+                  defaultValue={job?.deadline}
                   required
                 //   defaultValue={user?.email}
                   type="date"
@@ -104,6 +104,8 @@ const AddJob = () => {
                 </label>
                 <input
                   name="short_description"
+                  required
+                  defaultValue={job?.short_description}
                 //   defaultValue={job?.email}
                   type="text"
                   placeholder="Short Description"
@@ -117,6 +119,8 @@ const AddJob = () => {
                 <input
                   name="minPrice"
                 //   defaultValue={job?.email}
+                required
+                defaultValue={job?.minPrice}
                   type="text"
                   placeholder="Minimum price"
                   className="input input-bordered input-success w-full max-w-xs"
@@ -128,6 +132,8 @@ const AddJob = () => {
                 </label>
                 <input
                   name="maxPrice"
+                  required
+                  defaultValue={job?.maxPrice}
                 //   defaultValue={job?.email}
                   type="text"
                   placeholder="Maximum price"
@@ -139,7 +145,7 @@ const AddJob = () => {
               <button
                 type="submit"
                 className="bg-[#005d45] hover:bg-[#104235]  py-2 rounded text-white text-xl font-medium">
-                Add Job
+                Update
               </button>
             </div>
           </form>
@@ -148,4 +154,4 @@ const AddJob = () => {
      );
 }
  
-export default AddJob;
+export default UpdateModal;
