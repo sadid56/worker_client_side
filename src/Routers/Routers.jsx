@@ -4,6 +4,8 @@ import Home from "../Pages/Home/Home/Home";
 import Login from "../Authentication/Login";
 import Registration from "../Authentication/Registration";
 import Error from "../shared/Error/Error";
+import JobsDetails from "../Components/JobsDetails/JobsDetails";
+import AddJob from "../Components/AddJob/AddJob";
 
 const Routers = createBrowserRouter([
     {
@@ -22,6 +24,15 @@ const Routers = createBrowserRouter([
             {
                 path: '/registration',
                 element: <Registration/>
+            },
+            {
+                path: '/job-details/:id',
+                element: <JobsDetails/>,
+                loader: ({params})=>fetch(`http://localhost:5000/jobs/${params.id}`)
+            },
+            {
+                path: '/add-job',
+                element: <AddJob/>
             }
         ]
     }
