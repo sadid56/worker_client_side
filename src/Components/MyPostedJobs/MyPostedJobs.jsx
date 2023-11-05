@@ -15,6 +15,25 @@ const MyPostedJobs = () => {
       .then((data) => setJobs(data));
   }, [user?.email]);
 
+  const handleDeleteJobs = (id)=>{
+    const proced = confirm('Are you sure to delete ?')
+    if(proced){
+        fetch(`http://localhost:5000/jobs/${id}`, {
+            method: 'delete'
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if(data.deletedCount === 1){
+                alert('delete success')
+                const remaining = jobs.filter(job => job?._id !== id)
+                setJobs(remaining)
+            }
+        })
+    }
+
+  }
+
   return (
     <div>
       <Navber />
@@ -34,7 +53,7 @@ const MyPostedJobs = () => {
               <p className="text-gray-400">{job?.short_description}</p>
             </div>
             <div className="flex flex-col gap-3">
-              <button className="btn btn-circle">
+              <button onClick={()=>handleDeleteJobs(job?._id)} className="btn btn-circle">
                 <i className="fa-solid fa-trash text-xl text-red-500"></i>
               </button>
               <button onClick={()=> navigate(`/update-jobs/${job?._id}`)} className="btn btn-circle bg-[#005d45] hover:bg-[#104235] text-white text-xl font-medium rounded-full">
