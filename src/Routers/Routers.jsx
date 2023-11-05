@@ -8,6 +8,8 @@ import JobsDetails from "../Components/JobsDetails/JobsDetails";
 import AddJob from "../Components/AddJob/AddJob";
 import MyPostedJobs from "../Components/MyPostedJobs/MyPostedJobs";
 import UpdateModal from "../Components/UpdateModal/UpdateModal";
+import MyBids from "../Components/MyBids/MyBids";
+import BidRequests from "../Components/BidsRequest/BidRequests";
 
 const Routers = createBrowserRouter([
     {
@@ -44,6 +46,16 @@ const Routers = createBrowserRouter([
                 path: '/update-jobs/:id',
                 element: <UpdateModal/>,
                 loader: ({params})=>fetch(`http://localhost:5000/jobs/${params.id}`)
+            },
+            {
+                path: '/my-bids',
+                element: <MyBids/>,
+                loader: ()=> fetch('http://localhost:5000/bids')
+            },
+            {
+                path: '/bids-requests',
+                element: <BidRequests/>,
+                // loader: ()=> fetch()
             }
         ]
     }
