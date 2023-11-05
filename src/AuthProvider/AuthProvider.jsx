@@ -77,7 +77,7 @@ const AuthProvider = ({ children }) => {
               const remaining = bids.filter(bid => bid._id !== id)
               const update = bids.find(bid => bid._id === id)
               update.status = 'accept'
-              const updateAccept = [update, ...remaining]
+              const updateAccept = [update, ...remaining] 
               setBids(updateAccept)
           }
       })

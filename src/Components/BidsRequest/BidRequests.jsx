@@ -6,36 +6,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const BidRequests = () => {
   const { handleAccept, hanldeReject, bids } = useContext(AuthContext);
-  //   const bids = useLoaderData();
-  //   const [bids, setBids] = useState([])
 
-  //     useEffect(()=>{
-  //         fetch('http://localhost:5000/bids')
-  //         .then(res => res.json())
-  //         .then(data => setBids(data))
-  //     },[])
-
-  //     const handleAccept = id =>{
-  //         // console.log('updare');
-  //         fetch(`http://localhost:5000/bids/${id}`, {
-  //             method: 'PATCH',
-  //             headers: {
-  //                 'content-type': 'application/json'
-  //             },
-  //             body: JSON.stringify({status: 'accept'})
-  //         })
-  //         .then(res => res.json())
-  //         .then(data => {
-  //             console.log(data);
-  //             if(data.acknowledged){
-  //                 const remaining = bids.filter(bid => bid._id !== id)
-  //                 const update = bids.find(bid => bid._id === id)
-  //                 update.status = 'accept'
-  //                 const updateAccept = [update, ...remaining]
-  //                 setBids(updateAccept)
-  //             }
-  //         })
-  //     }
 
   return (
     <div>

@@ -10,55 +10,58 @@ import MyPostedJobs from "../Components/MyPostedJobs/MyPostedJobs";
 import UpdateModal from "../Components/UpdateModal/UpdateModal";
 import MyBids from "../Components/MyBids/MyBids";
 import BidRequests from "../Components/BidsRequest/BidRequests";
+import PrivateRoute from "../Private/PrivateRoute";
 
 const Routers = createBrowserRouter([
-    {
-        path: '/',
-        element: <Main/>,
-        errorElement: <Error/>,
-        children: [
-            {
-                index: true,
-                element: <Home/>
-            },
-            {
-                path: 'login',
-                element: <Login/>
-            },
-            {
-                path: '/registration',
-                element: <Registration/>
-            },
-            {
-                path: '/job-details/:id',
-                element: <JobsDetails/>,
-                loader: ({params})=>fetch(`http://localhost:5000/jobs/${params.id}`)
-            },
-            {
-                path: '/add-job',
-                element: <AddJob/>
-            },
-            {
-                path: '/my-posted-job',
-                element: <MyPostedJobs/>
-            },
-            {
-                path: '/update-jobs/:id',
-                element: <UpdateModal/>,
-                loader: ({params})=>fetch(`http://localhost:5000/jobs/${params.id}`)
-            },
-            {
-                path: '/my-bids',
-                element: <MyBids/>,
-                loader: ()=> fetch('http://localhost:5000/bids')
-            },
-            {
-                path: '/bids-requests',
-                element: <BidRequests/>,
-                // loader: ()=> fetch()
-            }
-        ]
-    }
-])
- 
+  {
+    path: "/",
+    element: <Main />,
+    errorElement: <Error />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "/registration",
+        element: <Registration />,
+      },
+      {
+        path: "/job-details/:id",
+        element: <PrivateRoute><JobsDetails /></PrivateRoute>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/jobs/${params.id}`),
+      },
+      {
+        path: "/add-job",
+        element: <PrivateRoute><AddJob /></PrivateRoute>,
+      },
+      {
+        path: "/my-posted-job",
+        element: <PrivateRoute><MyPostedJobs /></PrivateRoute>,
+      },
+      {
+        path: "/update-jobs/:id",
+        element: <UpdateModal />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/jobs/${params.id}`),
+      },
+      {
+        path: "/my-bids",
+        element: <PrivateRoute><MyBids /></PrivateRoute>,
+        loader: () => fetch("http://localhost:5000/bids"),
+      },
+      {
+        path: "/bids-requests",
+        element:<PrivateRoute> <BidRequests /></PrivateRoute>,
+        // loader: ()=> fetch()
+      },
+    ],
+  },
+]);
+
 export default Routers;
