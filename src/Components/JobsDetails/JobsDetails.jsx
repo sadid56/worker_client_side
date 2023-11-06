@@ -3,6 +3,7 @@ import Navber from "../../shared/Navber/Navber";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { Helmet } from "react-helmet";
+import Swal from "sweetalert2";
 
 const JobsDetails = () => {
   const job = useLoaderData();
@@ -31,7 +32,11 @@ const JobsDetails = () => {
         .then(data => {
             console.log(data);
             if(data?.acknowledged){
-                alert('bid success')
+              Swal.fire({
+                title: "Congratulation !",
+                text: "You have bid this job.",
+                icon: "success"
+              });
                 navigate('/my-bids')
             }
         })

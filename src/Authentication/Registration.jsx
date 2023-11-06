@@ -1,15 +1,15 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navber from "../shared/Navber/Navber";
 import registerPng from "../assets/images/register.png";
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { Helmet } from "react-helmet";
+import toast from "react-hot-toast";
 
 const Registration = () => {
- const {createUser, profileUpdate} = useContext(AuthContext)
-
-
+  const { createUser, profileUpdate } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleRegistration = (e) => {
     e.preventDefault();
@@ -18,34 +18,33 @@ const Registration = () => {
     const photo = e.target.photo.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(name, photo,email, password);
+    // console.log(name, photo,email, password);
 
     //create user with firebase
     createUser(email, password)
-    .then(res => {
-        console.log(res.user);
+      .then(() => {
+        // console.log(res.user);
 
         //update profile
         profileUpdate(name, photo)
-        .then(()=>{
-            alert('Registration success !')
-        })
-        .catch(error => {
-            console.log(error.message);
-        })
-        
-    })
-    .catch(error =>{
+          .then(() => {
+            navigate("/");
+            toast.success("Registration success !");
+          })
+          .catch((error) => {
+            toast.error(error.message);
+          });
+      })
+      .catch((error) => {
         console.log(error.message);
-    })
+      });
   };
 
   return (
     <div>
-
-<Helmet>
-  <title>Worker | Registration</title>
-</Helmet>
+      <Helmet>
+        <title>Worker | Registration</title>
+      </Helmet>
 
       <Navber />
       <h3 className="text-4xl text-center font-bold border-b-2 border-[#005d45] w-fit mx-auto mt-5">

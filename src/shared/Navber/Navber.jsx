@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import logo from '../../assets/logo/logo.png';
 import logoText from '../../assets/logo/logo-text.png'
+import toast from "react-hot-toast";
 
 const Navber = () => {
     const {user, logOut} = useContext(AuthContext)
@@ -19,10 +20,10 @@ const Navber = () => {
     const handleLogOut = ()=>{
         logOut()
         .then(()=>{
-            alert('log Out success')
+            toast.success('Log out success !')
         })
         .catch(error => {
-            console.log(error.message);
+            toast.error(error.message)
         })
     }
 

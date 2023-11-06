@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Navber from "../../shared/Navber/Navber";
 import { useLoaderData } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const UpdateModal = () => {
     // const {user} = useContext(AuthContext)
@@ -43,6 +44,11 @@ const UpdateModal = () => {
     }
     return ( 
         <div>
+
+        <Helmet>
+          <title>Worker | Update Job</title>
+        </Helmet>
+
             <Navber/>
             <div className="max-w-2xl mx-auto">
              <form onSubmit={handleUpdate} className="card-body">

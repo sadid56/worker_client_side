@@ -3,6 +3,7 @@ import Navber from "../../shared/Navber/Navber";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import Swal from "sweetalert2";
 
 const AddJob = () => {
     const {user} = useContext(AuthContext)
@@ -35,9 +36,13 @@ const AddJob = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
             if(data.acknowledged){
-                alert('job added succes')
+              Swal.fire({
+                title: "Job Added",
+                text: "You have added a new job",
+                icon: "success"
+              });
                 navigate('/my-posted-job')
             }
         })

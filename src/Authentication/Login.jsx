@@ -6,6 +6,7 @@ import { FaGoogle } from "react-icons/fa6";
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { Helmet } from "react-helmet";
+import toast from "react-hot-toast";
 
 const Login = () => {
     const {googleLogin, loginUser} = useContext(AuthContext)
@@ -18,11 +19,11 @@ const Login = () => {
         googleLogin()
         .then(() => {
             // console.log(res.user)
-            alert('Google Login success')
+            toast.success(' Google login Successfully !')
             navigate(location?.state ? location?.state : '/')
         })
         .catch(error =>{
-            console.log(error.message);
+            toast.error(error.message)
         })
     }
 
@@ -35,11 +36,11 @@ const Login = () => {
 
         loginUser(email, password)
         .then(()=>{
-            alert('login success')
+           toast.success('Login Success !')
             navigate(location?.state ? location?.state : '/')
         })
         .catch(error =>{
-            console.log(error.message);
+            toast.error(error.message)
         })
     }
 
