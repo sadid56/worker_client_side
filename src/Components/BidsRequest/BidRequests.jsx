@@ -1,20 +1,64 @@
-// import { useLoaderData } from "react-router-dom";
+/* eslint-disable no-unused-vars */
 import Navber from "../../shared/Navber/Navber";
-import { useContext } from "react";
-// import MyBids from "../MyBids/MyBids";
-import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 
 const BidRequests = () => {
-  const { handleAccept, hanldeReject, bids } = useContext(AuthContext);
+  const [bids, setBids] = useState([]);
 
+  useEffect(() => {
+    fetch(`http://localhost:5000/bids`)
+      .then((res) => res.json())
+      .then((data) => setBids(data));
+  }, []);
 
+  const handleAccept = (id) => {
+    // console.log('updare');
+
+    fetch(`http://localhost:5000/bids/${id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ status: "accept" }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          const remaining = bids.filter((bid) => bid._id !== id);
+          const update = bids.find((bid) => bid._id === id);
+          update.status = "accept";
+          const updateAccept = [update, ...remaining];
+          setBids(updateAccept);
+        }
+      });
+  };
+  const hanldeReject = (id) => {
+    fetch(`http://localhost:5000/bids/${id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ status: "reject" }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          const remaining = bids.filter((bid) => bid._id !== id);
+          const update = bids.find((bid) => bid._id === id);
+          update.status = "reject";
+          const updateAccept = [update, ...remaining];
+          setBids(updateAccept);
+        }
+      });
+  };
   return (
     <div>
-
-   <Helmet>
-    <title>Worker | Bids Requests</title>
-   </Helmet>
+      <Helmet>
+        <title>Worker | Bids Requests</title>
+      </Helmet>
 
       <Navber />
       <div>
@@ -42,41 +86,41 @@ const BidRequests = () => {
                   <td className="text-xl font-semibold">{bid?.deadline}</td>
                   <td className="text-xl font-semibold">{bid?.price}</td>
                   <td>
-                    {bid.status === "accept" ? (
+                    {bid?.status === "accept" ? (
                       <span className="text-success text-xl font-medium flex items-center gap-2">
                         <span className="loading loading-spinner text-success"></span>
                         In Progress
                       </span>
                     ) : (
-                        <span className="text-red-500 text-xl font-medium flex items-center gap-2">
-                          <span className="loading loading-spinner text-success"></span>{" "}
+                        <span className="text-success text-xl font-medium flex items-center gap-2">
+                          <span className="loading loading-spinner text-success"></span>
                           Pending...
                         </span>
                       ) && bid.status === "reject" ? (
-                      <p className="text-xl font-medium text-red-500">
+                      <p className="text-red-500 font-medium text-xl">
                         Rejected
+                      </p>
+                    ) : (
+                        <span className="text-success text-xl font-medium flex items-center gap-2">
+                          <span className="loading loading-spinner text-success"></span>
+                          Pending...
+                        </span>
+                      ) && bid.status === "complete" ? (
+                      <p className="text-xl font-medium text-success">
+                        Completed
                       </p>
                     ) : (
                       <span className="text-success text-xl font-medium flex items-center gap-2">
                         <span className="loading loading-spinner text-success"></span>{" "}
                         Pending...
                       </span>
-                    ) && bid.status === "complete" ? (
-                        <p className="text-xl font-medium text-success">
-                          Completed
-                        </p>
-                      ) : (
-                        <span className="text-success text-xl font-medium flex items-center gap-2">
-                          <span className="loading loading-spinner text-success"></span>{" "}
-                          Pending...
-                        </span>
-                      )
-                    
-                    }
+                    )}
                   </td>
 
                   <td>
-                    {bid.status === "accept" || bid.status === "reject" ? (
+                    {bid?.status === "accept" ||
+                    bid?.status === "reject" ||
+                    bid?.status === "complete" ? (
                       <button className="btn" disabled="disabled">
                         Accept
                       </button>
@@ -84,25 +128,14 @@ const BidRequests = () => {
                       <button
                         onClick={() => handleAccept(bid._id)}
                         className="btn btn-outline btn-success">
-                        Accept{" "}
+                        Accept
                       </button>
-                    )
-                    && bid.status === 'complete' ? (
-                        <button className="btn" disabled="disabled">
-                          Accept
-                        </button>
-                      ) : (
-                        <button
-                          onClick={() => handleAccept(bid._id)}
-                          className="btn btn-outline btn-success">
-                          Accept{" "}
-                        </button>
-                      )
-                    
-                    }
+                    )}
                   </td>
                   <td>
-                    {bid.status === "accept" || bid.status === "reject" ? (
+                    {bid?.status === "accept" ||
+                    bid?.status === "reject" ||
+                    bid?.status === "complete" ? (
                       <button className="btn" disabled="disabled">
                         Reject
                       </button>
@@ -110,21 +143,9 @@ const BidRequests = () => {
                       <button
                         onClick={() => hanldeReject(bid._id)}
                         className="btn btn-outline btn-error">
-                        Reject{" "}
+                        Reject
                       </button>
-                    ) && bid.status === 'complete' ? (
-                        <button className="btn" disabled="disabled">
-                          Reject
-                        </button>
-                      ) : (
-                        <button
-                          onClick={() => hanldeReject(bid._id)}
-                          className="btn btn-outline btn-error">
-                          Reject{" "}
-                        </button>
-                      )
-                    
-                    }
+                    )}
                   </td>
                 </tr>
               ))}

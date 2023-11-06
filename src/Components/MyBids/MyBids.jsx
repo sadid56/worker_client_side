@@ -1,12 +1,40 @@
 import Navber from "../../shared/Navber/Navber";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { Helmet } from "react-helmet";
+import { useState } from "react";
 
 const MyBids = () => {
   //   const bidsLoad = useLoaderData();
-  const { bids, handleComplete } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  const [bids , setBids] = useState([])
 
+  useEffect(()=>{
+    fetch(`http://localhost:5000/bids?email=${user?.email}`)
+    .then(res => res.json())
+    .then(data => setBids(data))
+},[user?.email])
+
+const handleComplete = id => {
+  fetch(`http://localhost:5000/bids/${id}`, {
+    method: 'PATCH',
+    headers: {
+        'content-type': 'application/json'
+    },
+    body: JSON.stringify({status: 'complete'})
+})
+.then(res => res.json())
+.then(data => {
+    console.log(data);
+    if(data.acknowledged){
+        const remaining = bids.filter(bid => bid._id !== id)
+        const update = bids.find(bid => bid._id === id)
+        update.status = 'complete'
+        const updateAccept = [update, ...remaining]
+        setBids(updateAccept)
+    }
+})
+}
   return (
     <div>
       <Helmet>

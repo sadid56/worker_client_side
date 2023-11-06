@@ -16,7 +16,6 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [bids, setBids] = useState([])
 
   // google login
   const provider = new GoogleAuthProvider();
@@ -54,76 +53,6 @@ const AuthProvider = ({ children }) => {
 
 
 
-  useEffect(()=>{
-      fetch(`http://localhost:5000/bids?email=${user?.email}`)
-      .then(res => res.json())
-      .then(data => setBids(data))
-  },[user?.email])
-
-
-  const handleAccept = id =>{
-      // console.log('updare');
-      fetch(`http://localhost:5000/bids/${id}`, {
-          method: 'PATCH',
-          headers: {
-              'content-type': 'application/json'
-          },
-          body: JSON.stringify({status: 'accept'})
-      })
-      .then(res => res.json())
-      .then(data => {
-          console.log(data);
-          if(data.acknowledged){
-              const remaining = bids.filter(bid => bid._id !== id)
-              const update = bids.find(bid => bid._id === id)
-              update.status = 'accept'
-              const updateAccept = [update, ...remaining] 
-              setBids(updateAccept)
-          }
-      })
-  }
-
-  const hanldeReject = id => {
-    fetch(`http://localhost:5000/bids/${id}`, {
-      method: 'PATCH',
-      headers: {
-          'content-type': 'application/json'
-      },
-      body: JSON.stringify({status: 'reject'})
-  })
-  .then(res => res.json())
-  .then(data => {
-      console.log(data);
-      if(data.acknowledged){
-          const remaining = bids.filter(bid => bid._id !== id)
-          const update = bids.find(bid => bid._id === id)
-          update.status = 'reject'
-          const updateAccept = [update, ...remaining]
-          setBids(updateAccept)
-      }
-  })
-  }
-  const handleComplete = id => {
-    fetch(`http://localhost:5000/bids/${id}`, {
-      method: 'PATCH',
-      headers: {
-          'content-type': 'application/json'
-      },
-      body: JSON.stringify({status: 'complete'})
-  })
-  .then(res => res.json())
-  .then(data => {
-      console.log(data);
-      if(data.acknowledged){
-          const remaining = bids.filter(bid => bid._id !== id)
-          const update = bids.find(bid => bid._id === id)
-          update.status = 'complete'
-          const updateAccept = [update, ...remaining]
-          setBids(updateAccept)
-      }
-  })
-  }
-
   //current user observe
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -132,7 +61,7 @@ const AuthProvider = ({ children }) => {
     });
     return () => unSubscribe();
   }, []);
-  const authInfo = { user, loading, googleLogin,createUser,profileUpdate,loginUser, logOut, handleAccept, bids, hanldeReject, handleComplete };
+  const authInfo = { user, loading, googleLogin,createUser,profileUpdate,loginUser, logOut,  };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
