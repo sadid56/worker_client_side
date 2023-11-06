@@ -53,7 +53,7 @@ const Jobs = () => {
 
         {categoris.map((category) => (
           <TabPanel key={category}>
-            <div className="grid grid-cols-4 gap-5">
+            <div className="grid grid-cols-3 gap-5 max-w-6xl mx-auto mb-5">
               {jobs.map((job) => (
                 <div className="card mt-5 rounded-md bg-[#ecf2f0] shadow-xl">
                   <div className="card-body">
