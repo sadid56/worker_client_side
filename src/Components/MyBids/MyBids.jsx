@@ -7,34 +7,48 @@ import { useState } from "react";
 const MyBids = () => {
   //   const bidsLoad = useLoaderData();
   const { user } = useContext(AuthContext);
-  const [bids , setBids] = useState([])
+  const [bids, setBids] = useState([]);
+  const [sortValu, setSortValue] = useState();
 
-  useEffect(()=>{
+  useEffect(() => {
     fetch(`http://localhost:5000/bids?email=${user?.email}`)
-    .then(res => res.json())
-    .then(data => setBids(data))
-},[user?.email])
+      .then((res) => res.json())
+      .then((data) => setBids(data));
+  }, [user?.email]);
 
-const handleComplete = id => {
-  fetch(`http://localhost:5000/bids/${id}`, {
-    method: 'PATCH',
-    headers: {
-        'content-type': 'application/json'
-    },
-    body: JSON.stringify({status: 'complete'})
-})
-.then(res => res.json())
-.then(data => {
-    console.log(data);
-    if(data.acknowledged){
-        const remaining = bids.filter(bid => bid._id !== id)
-        const update = bids.find(bid => bid._id === id)
-        update.status = 'complete'
-        const updateAccept = [update, ...remaining]
-        setBids(updateAccept)
+  const handleComplete = (id) => {
+    fetch(`http://localhost:5000/bids/${id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ status: "complete" }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          const remaining = bids.filter((bid) => bid._id !== id);
+          const update = bids.find((bid) => bid._id === id);
+          update.status = "complete";
+          const updateAccept = [update, ...remaining];
+          setBids(updateAccept);
+        }
+      });
+  };
+
+  const HandleSort = () => {
+    if (sortValu === "complete") {
+      fetch(`http://localhost:5000/bids?sortField=status&sortOrder=asc`)
+        .then((res) => res.json())
+        .then((data) => setBids(data));
     }
-})
-}
+    if (sortValu === "cancele") {
+      fetch(`http://localhost:5000/bids?sortField=status&sortOrder=desc`)
+        .then((res) => res.json())
+        .then((data) => setBids(data));
+    }
+  };
   return (
     <div>
       <Helmet>
@@ -43,9 +57,31 @@ const handleComplete = id => {
 
       <Navber />
 
-      <div>
+      <div className="max-w-6xl mx-auto">
         <h3 className="text-3xl font-bold text-center my-5">My Bids</h3>
-        <div className="overflow-x-auto max-w-6xl mx-auto">
+
+        <div className="flex justify-center">
+
+          <div className="form-control">
+            <label className="input-group">
+              <select value={sortValu}
+            onChange={(e) => setSortValue(e.target.value)} className="input input-bordered input-success w-full max-w-xs">
+              <option disabled selected>
+              Sort By
+            </option>
+            <option value="complete">Completed</option>
+            <option value="cancele">Canceled</option>
+              </select>
+              <span
+                onClick={HandleSort}
+                className="bg-[#005d45] hover:bg-[#104235] w-full  py-2 text-white text-xl font-medium">
+                Sort Now
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div className="overflow-x-auto ">
           <table className="table table-xs md:table-md lg:table-lg">
             <thead>
               <tr>

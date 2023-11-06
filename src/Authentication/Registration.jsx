@@ -98,7 +98,7 @@ const Registration = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="text"
+                  type="password"
                   name="password"
                   required
                   placeholder="Password"

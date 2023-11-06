@@ -122,11 +122,13 @@ const JobsDetails = () => {
               </div>
             </div>
             <div className="form-control mt-6">
-              <button
+              {
+                user?.email === job?.email ? <button className="btn normal-case text-xl" disabled="disabled">Bid on the project</button> : <button
                 type="submit"
                 className="bg-[#005d45] hover:bg-[#104235]  py-2 rounded text-white text-xl font-medium">
                 Bid on the project
               </button>
+              }
             </div>
           </form>
         </div>

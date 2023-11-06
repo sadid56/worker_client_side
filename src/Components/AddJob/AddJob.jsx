@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 const AddJob = () => {
     const {user} = useContext(AuthContext)
     const navigate = useNavigate()
-    const [categorie , setCategorie] = useState('Web development')
+    const [categorie , setCategorie] = useState('Web-development')
 
 
 
@@ -66,9 +66,9 @@ const AddJob = () => {
 
           <div className="flex justify-end">
           <select onChange={handleCategorieSet} value={categorie} className="input input-bordered input-success w-fit" required>
-                <option value="Web development">Web development</option>
-                <option value="Digital marketing">Digital marketing</option>
-                <option value="Graphics design">Graphics design</option>
+                <option value="Web-development">Web development</option>
+                <option value="Digital-marketing">Digital marketing</option>
+                <option value="Graphics-design">Graphics design</option>
             </select>
           </div>
           

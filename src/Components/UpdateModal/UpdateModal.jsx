@@ -1,12 +1,14 @@
 import { useState } from "react";
 import Navber from "../../shared/Navber/Navber";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import Swal from "sweetalert2";
 
 const UpdateModal = () => {
     // const {user} = useContext(AuthContext)
     const [categoris, setCategories] = useState('Web development')
     const job = useLoaderData()
+    const navigate = useNavigate()
 
     const handleUpdate = e =>{
         e.preventDefault()
@@ -34,7 +36,12 @@ const UpdateModal = () => {
         .then(data => {
             console.log(data);
             if(data.modifiedCount > 0){
-                alert('update success')
+              Swal.fire({
+                title: "Updated Successfull !",
+                text: "You have update this job",
+                icon: "success",
+              });
+              navigate(-1)
             }
         })
       
