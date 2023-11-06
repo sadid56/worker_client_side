@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Navber from "../../shared/Navber/Navber";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
@@ -6,6 +6,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 const JobsDetails = () => {
   const job = useLoaderData();
   const {user} = useContext(AuthContext);
+  const navigate = useNavigate()
   // console.log(job);
 
     const handleBidNow = e =>{
@@ -30,6 +31,7 @@ const JobsDetails = () => {
             console.log(data);
             if(data?.acknowledged){
                 alert('bid success')
+                navigate('/my-bids')
             }
         })
         .catch(error => {
@@ -48,7 +50,7 @@ const JobsDetails = () => {
             Deadline: {job?.deadline}
           </h5>
           <h3 className="font-medium text-gray-400">
-            Price Range: {job?.price_range}
+            Price Range: {job?.minPrice} - {job?.maxPrice}
           </h3>
           <p className="text-gray-400">{job?.short_description}</p>
         </div>
