@@ -1,20 +1,12 @@
-/* eslint-disable react/no-unescaped-entities */
-// import { useLoaderData } from "react-router-dom";
+
 import Navber from "../../shared/Navber/Navber";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
-// import { ProgressBar, Step } from "react-step-progress-bar";
-// import { useContext } from "react";
-// import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const MyBids = () => {
   //   const bidsLoad = useLoaderData();
   const { bids, handleComplete } = useContext(AuthContext);
 
-  //   const steps = [
-  //     'in progress',
-  //     'complete'
-  //   ]
   return (
     <div>
       <Navber />

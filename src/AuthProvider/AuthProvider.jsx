@@ -55,10 +55,10 @@ const AuthProvider = ({ children }) => {
 
 
   useEffect(()=>{
-      fetch('http://localhost:5000/bids')
+      fetch(`http://localhost:5000/bids?email=${user?.email}`)
       .then(res => res.json())
       .then(data => setBids(data))
-  },[])
+  },[user?.email])
 
 
   const handleAccept = id =>{
