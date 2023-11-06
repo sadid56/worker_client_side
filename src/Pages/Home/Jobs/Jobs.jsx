@@ -6,7 +6,7 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 const Jobs = () => {
   const [loadjobs, setLoadJobs] = useState([]);
   const [jobs, setJobs] = useState([]);
-  const [selectCategorie, setSelectCategorie] = useState(null);
+  const [selectCategorie, setSelectCategorie] = useState("Web-development");
   const navigate = useNavigate()
 
   const categoris = ["Web-development", "Digital-marketing", "Graphics-design"];
@@ -38,7 +38,6 @@ const Jobs = () => {
           <TabList className="flex flex-wrap justify-center gap-6">
             {categoris.map((categorie) => (
               <Tab
-              defaultChecked={0}
                 key={categorie}
                 onClick={() => setSelectCategorie(categorie)}
                 className={`cursor-pointer outline-none  text-xl font-semibold ${
