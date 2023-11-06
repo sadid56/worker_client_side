@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import Banner from "../Banner/Banner";
 import Jobs from "../Jobs/Jobs";
 import MobileAddApp from "../MobileAppAdd/MobileAppAdd";
@@ -7,6 +8,10 @@ import Subscribe from "../subscribe/Subscribe";
 const Home = () => {
     return ( 
         <div>
+            <Helmet>
+                <title>Worker | Home</title>
+            </Helmet>
+
             <Banner/>
             <Jobs/>
             <MobileAddApp/>

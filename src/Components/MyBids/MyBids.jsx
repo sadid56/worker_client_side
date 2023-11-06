@@ -1,7 +1,7 @@
-
 import Navber from "../../shared/Navber/Navber";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const MyBids = () => {
   //   const bidsLoad = useLoaderData();
@@ -9,6 +9,10 @@ const MyBids = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Worker | My Bids</title>
+      </Helmet>
+
       <Navber />
 
       <div>

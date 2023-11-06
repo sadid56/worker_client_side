@@ -2,6 +2,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import Navber from "../../shared/Navber/Navber";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const JobsDetails = () => {
   const job = useLoaderData();
@@ -42,6 +43,11 @@ const JobsDetails = () => {
 
   return (
     <div>
+
+ <Helmet>
+  <title>Worker | Job Details</title>
+ </Helmet>
+
       <Navber />
       <div className="flex items-center gap-5 max-w-6xl mx-auto">
         <div className="flex-1 space-y-2 bg-[#fde7de] p-10 rounded shadow">

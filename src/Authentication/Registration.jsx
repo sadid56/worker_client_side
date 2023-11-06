@@ -4,6 +4,7 @@ import Navber from "../shared/Navber/Navber";
 import registerPng from "../assets/images/register.png";
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const Registration = () => {
  const {createUser, profileUpdate} = useContext(AuthContext)
@@ -41,6 +42,11 @@ const Registration = () => {
 
   return (
     <div>
+
+<Helmet>
+  <title>Worker | Registration</title>
+</Helmet>
+
       <Navber />
       <h3 className="text-4xl text-center font-bold border-b-2 border-[#005d45] w-fit mx-auto mt-5">
         Registration Now

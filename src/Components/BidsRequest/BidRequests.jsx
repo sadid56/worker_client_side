@@ -3,6 +3,7 @@ import Navber from "../../shared/Navber/Navber";
 import { useContext } from "react";
 // import MyBids from "../MyBids/MyBids";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const BidRequests = () => {
   const { handleAccept, hanldeReject, bids } = useContext(AuthContext);
@@ -10,6 +11,11 @@ const BidRequests = () => {
 
   return (
     <div>
+
+   <Helmet>
+    <title>Worker | Bids Requests</title>
+   </Helmet>
+
       <Navber />
       <div>
         <h3 className="text-3xl font-bold text-center my-5">Bids Requests</h3>

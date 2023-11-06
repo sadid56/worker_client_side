@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa6";
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
     const {googleLogin, loginUser} = useContext(AuthContext)
@@ -39,6 +40,11 @@ const Login = () => {
 
   return (
     <div>
+
+     <Helmet>
+      <title>Worker | Login</title>
+     </Helmet>
+
       <Navber />
       <h3 className="text-4xl text-center font-bold border-b-2 border-[#005d45] w-fit mx-auto mt-5">
         Login Now

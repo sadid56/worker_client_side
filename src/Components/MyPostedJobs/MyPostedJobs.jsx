@@ -3,6 +3,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Navber from "../../shared/Navber/Navber";
 // import UpdateModal from "../UpdateModal/UpdateModal";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const MyPostedJobs = () => {
   const { user } = useContext(AuthContext);
@@ -36,6 +37,12 @@ const MyPostedJobs = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>
+          Worker | My Posted Job
+        </title>
+      </Helmet>
+
       <Navber />
       <h3 className="text-3xl text-center font-bold">
         My added total jobs: {jobs.length}

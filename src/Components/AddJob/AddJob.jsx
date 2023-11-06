@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import Navber from "../../shared/Navber/Navber";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const AddJob = () => {
     const {user} = useContext(AuthContext)
@@ -49,6 +50,10 @@ const AddJob = () => {
     }
     return ( 
         <div>
+          <Helmet>
+            <title>Worker | Add Job</title>
+          </Helmet>
+
             <Navber/>
              <div className="max-w-2xl mx-auto">
              <form onSubmit={handleAddJob} className="card-body">
