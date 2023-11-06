@@ -35,9 +35,10 @@ const Jobs = () => {
       </h3>
       <Tabs>
         <div className="flex justify-center">
-          <TabList className="flex gap-6">
+          <TabList className="flex flex-wrap justify-center gap-6">
             {categoris.map((categorie) => (
               <Tab
+              defaultChecked={0}
                 key={categorie}
                 onClick={() => setSelectCategorie(categorie)}
                 className={`cursor-pointer outline-none  text-xl font-semibold ${
@@ -53,7 +54,7 @@ const Jobs = () => {
 
         {categoris.map((category) => (
           <TabPanel key={category}>
-            <div className="grid grid-cols-3 gap-5 max-w-6xl mx-auto mb-5">
+            <div className="grid md:grid-cols-2 px-5 lg:grid-cols-3 gap-5 max-w-6xl mx-auto mb-5">
               {jobs.map((job) => (
                 <div className="card mt-5 rounded-md bg-[#ecf2f0] shadow-xl">
                   <div className="card-body">

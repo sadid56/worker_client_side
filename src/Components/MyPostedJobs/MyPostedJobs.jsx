@@ -41,7 +41,7 @@ const MyPostedJobs = () => {
         My added total jobs: {jobs.length}
       </h3>
 
-      <div className="grid grid-cols-2 gap-5 max-w-6xl mx-auto mt-10">
+      <div className="grid px-5 md:grid-cols-2 gap-5 max-w-6xl mx-auto mt-10">
         {jobs.map((job) => (
           <div key={job._id} className="flex justify-between bg-[#fde7de] p-5 rounded-md shadow-md">
             <div className="space-y-2">

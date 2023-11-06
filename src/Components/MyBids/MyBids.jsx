@@ -13,14 +13,8 @@ const MyBids = () => {
 
       <div>
         <h3 className="text-3xl font-bold text-center my-5">My Bids</h3>
-        {/* <ul className="steps my-5">
-          <li data-content="✓" className="step step-success">Register</li>
-          <li data-content="✓" className="step step-success">Choose plan</li>
-          <li className="step">Purchase</li>
-          <li className="step">Receive Product</li>
-        </ul> */}
         <div className="overflow-x-auto max-w-6xl mx-auto">
-          <table className="table table-xs">
+          <table className="table table-xs md:table-md lg:table-lg">
             <thead>
               <tr>
                 <th className="text-xl font-bold"></th>

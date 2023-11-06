@@ -1,4 +1,5 @@
 import addAppBg from "../../../assets/images/addApp.jpg";
+import adds from '../../../assets/images/adds.png'
 const MobileAddApp = () => {
   return (
     <div>
@@ -9,15 +10,15 @@ const MobileAddApp = () => {
         }}>
         <div className="hero-overlay"></div>
 
-          <div className=" flex w-full max-w-6xl mx-auto py-10">
-            <div className="flex-1">
+          <div className=" flex gap-5 flex-col md:flex-row px-5 w-full max-w-6xl mx-auto py-10">
+            <div className="flex-1 flex justify-center">
               <img
-                src="/images/stock/photo-1635805737707-575885ab0820.jpg"
-                className="max-w-sm rounded-lg shadow-2xl"
+                src={adds}
+                className="max-w-md rounded-lg shadow-2xl"
               />
             </div>
             <div className="flex-1 space-y-3">
-              <h1 className="text-5xl font-bold text-white">Download our mobile app</h1>
+              <h1 className="text-4xl md:text-5xl font-bold text-white">Download our mobile app</h1>
               <p className=" text-white">
                 Search through millions of jobs and find the right fit. Simply
                 swipe right to apply.

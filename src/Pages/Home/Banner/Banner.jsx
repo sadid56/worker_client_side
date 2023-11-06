@@ -11,9 +11,9 @@ const Banner = () => {
     <div className="bg-[#ecf2f0]">
       <Navber />
       <div className="hero max-w-6xl mx-auto">
-        <div className="hero-content flex-col lg:flex-row-reverse">
+        <div className="hero-content flex-col md:flex-row-reverse">
           <div className="relative">
-            <img src={heroPng} className="max-w-sm rounded-lg" />
+            <img src={heroPng} className="w-[400px] md:max-w-sm rounded-lg" />
             <div className="bg-[#e8e8e8] p-5 rounded-3xl w-fit absolute right-0 bottom-8">
               <h3 className="text-xl font-semibold mb-2">99+ Candidates get job</h3>
               <div className="avatar-group -space-x-6">
@@ -50,8 +50,8 @@ const Banner = () => {
               </div>
             </div>
           </div>
-          <div className="flex-1">
-            <h1 className="text-6xl font-bold">
+          <div className="flex-1 text-center md:text-start">
+            <h1 className="text-5xl lg:text-6xl font-bold">
               <span className="text-[#005d45]">Got Talent ?</span>
               Meet Opportunity
             </h1>

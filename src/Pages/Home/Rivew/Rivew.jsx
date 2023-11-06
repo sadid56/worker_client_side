@@ -14,10 +14,10 @@ const Rivew = () => {
   return (
     <div className="bg-[#f7f4e9] py-10">
         <div className="w-fit mx-auto text-center">
-            <h3 className="text-5xl font-bold mb-2">What our customers says</h3>
+            <h3 className="text-4xl md:text-5xl font-bold mb-2">What our customers says</h3>
             <p className="text-gray-600 font-medium mb-10">Don't take our word for it, take theirs!</p>
         </div>
-      <div className="grid grid-cols-3 gap-5 max-w-6xl mx-auto">
+      <div className="grid px-5 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
         {rivews.map((rivew) => (
           <div
             key={rivew.id}
