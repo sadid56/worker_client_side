@@ -3,7 +3,7 @@ import logo from '../../assets/logo/logo.png';
 
 const Footer = () => {
     return ( 
-        <footer className="mt-10">
+        <footer className="mt-10 bg-[#fde7de]">
             <div className="max-w-6xl mx-auto footer p-10 text-base-content">
   <aside>
     {/* <div className='flex items-center h-24'> */}
@@ -38,10 +38,10 @@ const Footer = () => {
     <a className="link link-hover">Cookie policy</a>
   </nav>
 </div>
-<hr  className="w-[80%] mx-auto"/>
+<hr  className="w-[80%] mx-auto border border-black"/>
 <div className="footer footer-center p-4  text-base-content">
   <aside>
-    <p>Copyright © 2023 - All right reserved by ACME Industries Ltd</p>
+    <p>Copyright © 2023 - All right reserved by Worker Team</p>
   </aside>
 </div>
         </footer>

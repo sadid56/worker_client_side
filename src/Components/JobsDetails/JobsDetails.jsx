@@ -42,7 +42,7 @@ const JobsDetails = () => {
     <div>
       <Navber />
       <div className="flex items-center gap-5 max-w-6xl mx-auto">
-        <div className="flex-1 space-y-2">
+        <div className="flex-1 space-y-2 bg-[#fde7de] p-10 rounded shadow">
           <h2 className="text-3xl font-bold">{job?.job_title}</h2>
           <h5 className="text-xl font-semibold text-gray-500">
             Deadline: {job?.deadline}
@@ -52,7 +52,7 @@ const JobsDetails = () => {
           </h3>
           <p className="text-gray-400">{job?.short_description}</p>
         </div>
-        <div>
+        <div className="flex-1">
           <form onSubmit={handleBidNow} className="card-body">
             <h3 className="text-2xl font-bold text-center">Your bid form</h3>
             <div className="grid grid-cols-2 gap-3">
@@ -87,6 +87,7 @@ const JobsDetails = () => {
                 <input
                   name="email"
                   required
+                  disabled
                   defaultValue={user?.email}
                   type="email"
                   placeholder="Your Email"

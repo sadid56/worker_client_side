@@ -1,9 +1,11 @@
 import { useContext, useState } from "react";
 import Navber from "../../shared/Navber/Navber";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const AddJob = () => {
     const {user} = useContext(AuthContext)
+    const navigate = useNavigate()
     const [categorie , setCategorie] = useState('Web development')
 
 
@@ -35,6 +37,7 @@ const AddJob = () => {
             console.log(data);
             if(data.acknowledged){
                 alert('job added succes')
+                navigate('/my-posted-job')
             }
         })
     }
