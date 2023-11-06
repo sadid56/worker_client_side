@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import Navber from "../shared/Navber/Navber";
 import loginPng from "../assets/images/login.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa6";
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
@@ -9,13 +9,17 @@ import { Helmet } from "react-helmet";
 
 const Login = () => {
     const {googleLogin, loginUser} = useContext(AuthContext)
+    const location = useLocation()
+    const navigate = useNavigate()
 
+    // console.log(location);
     //login login
     const handleGoogleLogin = ()=>{
         googleLogin()
-        .then(res => {
-            console.log(res.user)
+        .then(() => {
+            // console.log(res.user)
             alert('Google Login success')
+            navigate(location?.state ? location?.state : '/')
         })
         .catch(error =>{
             console.log(error.message);
@@ -27,11 +31,12 @@ const Login = () => {
         // const form = target.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(email, password);
+        // console.log(email, password);
 
         loginUser(email, password)
         .then(()=>{
             alert('login success')
+            navigate(location?.state ? location?.state : '/')
         })
         .catch(error =>{
             console.log(error.message);
