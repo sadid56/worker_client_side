@@ -1,100 +1,110 @@
-
-   [
-      {
-        "category": "Web development",
-        "email": "shihab@gmail.com",
-        "job_title": "Frontend Developer",
-        "deadline": "2023-12-15",
-        "price_range": "$40,000 - $60,000",
-        "short_description": "Seeking a skilled frontend developer to create user-friendly and responsive web interfaces."
-      },
-      {
-        "category": "Web development",
-        "email": "shoaib@gmail.com",
-        "job_title": "Backend Developer",
-        "deadline": "2023-11-30",
-        "price_range": "$50,000 - $70,000",
-        "short_description": "Looking for an experienced backend developer to build and maintain server-side applications."
-      },
-      {
-        "category": "Digital marketing",
-        "email": "samiya@gmail.com",
-        "job_title": "Digital Marketing Manager",
-        "deadline": "2024-02-01",
-        "price_range": "$60,000 - $80,000",
-        "short_description": "Looking for a seasoned digital marketing manager to drive online marketing campaigns and strategies."
-      },
-      {
-        "category": "Digital marketing",
-        "email": "shafiq@gmail.com",
-        "job_title": "Social Media Specialist",
-        "deadline": "2023-11-25",
-        "price_range": "$35,000 - $50,000",
-        "short_description": "Hiring a social media specialist to manage and grow our social media presence."
-      },
-      {
-        "category": "Graphics design",
-        "email": "sadid@gmail.com",
-        "job_title": "Graphic Designer",
-        "deadline": "2023-12-05",
-        "price_range": "$40,000 - $60,000",
-        "short_description": "We are in search of a talented graphic designer to produce visually appealing designs."
-      },
-      {
-        "category": "Graphics design",
-        "email": "fatema@gmail.com",
-        "job_title": "Illustrator",
-        "deadline": "2024-01-20",
-        "price_range": "$35,000 - $50,000",
-        "short_description": "Hiring an illustrator to create unique and creative artwork for various projects."
-      },
-      {
-        "category": "Web development",
-        "email": "humayun@gmail.com",
-        "job_title": "Full Stack Developer",
-        "deadline": "2024-01-10",
-        "price_range": "$60,000 - $80,000",
-        "short_description": "Hiring a full stack developer with expertise in both frontend and backend development."
-      },
-      {
-        "category": "Digital marketing",
-        "email": "sadid@gmail.com",
-        "job_title": "SEO Analyst",
-        "deadline": "2023-12-10",
-        "price_range": "$40,000 - $55,000",
-        "short_description": "We need an SEO analyst to optimize our website for search engine visibility."
-      },
-      {
-        "category": "Graphics design",
-        "email": "samiya@gmail.com",
-        "job_title": "UI/UX Designer",
-        "deadline": "2023-11-28",
-        "price_range": "$45,000 - $60,000",
-        "short_description": "Looking for a UI/UX designer to enhance the user experience of our digital products."
-      },
-      {
-        "category": "Digital marketing",
-        "email": "shafiq@gmail.com",
-        "job_title": "Content Marketing Writer",
-        "deadline": "2024-01-15",
-        "price_range": "$30,000 - $45,000",
-        "short_description": "Seeking a skilled content writer to create engaging marketing content."
-      },
-      {
-        "category": "Web development",
-        "email": "mizbah@gmail.com",
-        "job_title": "UI/UX Designer",
-        "deadline": "2023-12-20",
-        "price_range": "$45,000 - $65,000",
-        "short_description": "We are in need of a creative UI/UX designer to enhance the user experience of our web applications."
-      },
-      {
-        "category": "Graphics design",
-        "email": "mir@gmail.com",
-        "job_title": "Motion Graphics Designer",
-        "deadline": "2024-02-05",
-        "price_range": "$50,000 - $70,000",
-        "short_description": "Seeking a motion graphics designer to create compelling animations and videos."
-      }
-    ]
-  
+[
+  {
+    "category": "Web-development",
+    "email": "sadidhasan56@gmail.com",
+    "job_title": "Frontend Developer",
+    "deadline": "2023-12-15",
+    "minPrice": "60k",
+    "maxPrice": "70k",
+    "short_description": "Seeking a skilled frontend developer to create user-friendly and responsive web interfaces."
+  },
+  {
+    "category": "Web-development",
+    "email": "sadidhasan56@gmail.com",
+    "job_title": "Backend Developer",
+    "deadline": "2023-11-30",
+    "minPrice": "60k",
+    "maxPrice": "70k",
+    "short_description": "Looking for an experienced backend developer to build and maintain server-side applications."
+  },
+  {
+    "category": "Digital-marketing",
+    "email": "sadidhasan56@gmail.com",
+    "job_title": "Digital Marketing Manager",
+    "deadline": "2024-02-01",
+    "minPrice": "30k",
+    "maxPrice": "40k",
+    "short_description": "Looking for a seasoned digital marketing manager to drive online marketing campaigns and strategies."
+  },
+  {
+    "category": "Digital-marketing",
+    "email": "sadidhasan56@gmail.com",
+    "job_title": "Social Media Specialist",
+    "deadline": "2023-11-25",
+    "minPrice": "40k",
+    "maxPrice": "50k",
+    "short_description": "Hiring a social media specialist to manage and grow our social media presence."
+  },
+  {
+    "category": "Graphics-design",
+    "email": "sadidhasan56@gmail.com",
+    "job_title": "Graphic Designer",
+    "deadline": "2023-12-05",
+    "minPrice": "60k",
+    "maxPrice": "70k",
+    "short_description": "We are in search of a talented graphic designer to produce visually appealing designs."
+  },
+  {
+    "category": "Graphics-design",
+    "email": "sadidhasan56@gmail.com",
+    "job_title": "Illustrator",
+    "deadline": "2024-01-20",
+    "minPrice": "60k",
+    "maxPrice": "75k",
+    "short_description": "Hiring an illustrator to create unique and creative artwork for various projects."
+  },
+  {
+    "category": "Web-development",
+    "email": "sadidhasan56@gmail.com",
+    "job_title": "Full Stack Developer",
+    "deadline": "2024-01-10",
+    "minPrice": "60k",
+    "maxPrice": "66k",
+    "short_description": "Hiring a full stack developer with expertise in both frontend and backend development."
+  },
+  {
+    "category": "Digital-marketing",
+    "email": "sadidhasan56@gmail.com",
+    "job_title": "SEO Analyst",
+    "deadline": "2023-12-10",
+    "minPrice": "60k",
+    "maxPrice": "70k",
+    "short_description": "We need an SEO analyst to optimize our website for search engine visibility."
+  },
+  {
+    "category": "Graphics-design",
+    "email": "sadidhasan56@gmail.com",
+    "job_title": "UI/UX Designer",
+    "deadline": "2023-11-28",
+    "minPrice": "60k",
+    "maxPrice": "70k",
+    "short_description": "Looking for a UI/UX designer to enhance the user experience of our digital products."
+  },
+  {
+    "category": "Digital-marketing",
+    "email": "sadidhasan56@gmail.com",
+    "job_title": "Content Marketing Writer",
+    "deadline": "2024-01-15",
+    "minPrice": "60k",
+    "maxPrice": "70k",
+    "short_description": "Seeking a skilled content writer to create engaging marketing content."
+  },
+  {
+    "category": "Web-development",
+    "email": "sadidhasan56@gmail.com",
+    "job_title": "UI/UX Designer",
+    "deadline": "2023-12-20",
+    "minPrice": "60k",
+    "maxPrice": "70k",
+    "short_description": "We are in need of a creative UI/UX designer to enhance the user experience of our web applications."
+  },
+  {
+    "category": "Graphics-design",
+    "email": "sadidhasan56@gmail.com",
+    "job_title": "Motion Graphics Designer",
+    "deadline": "2024-02-05",
+    "minPrice": "60k",
+    "maxPrice": "80k",
+    "short_description": "Seeking a motion graphics designer to create compelling animations and videos."
+  }
+]

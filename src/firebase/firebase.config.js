@@ -1,10 +1,14 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-// TODO: Add SDKs for Firebase products that you want to use
+const all = import.meta.env;
+
+// done: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+console.log('key', all.API_KEY);
+// console.log(process.env.API_KEY);
 const firebaseConfig = {
   apiKey: "AIzaSyD54YaChx8XwinMKRpAUAiTlrryM9zFbQU",
   authDomain: "assignment-11-96d26.firebaseapp.com",

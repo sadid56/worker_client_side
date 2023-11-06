@@ -18,7 +18,7 @@ const JobsDetails = () => {
         const email = e.target.email.value;
         const buyerEamil = e.target.buyerEamil.value;
 
-        const bidNow = {price, deadline, email, buyerEamil, job_title:job?.job_title}
+        const bidNow = {price, deadline, email, buyerEamil, job_title:job?.job_title,status: 'pending'}
         // console.log(bidNow);
 
         fetch('http://localhost:5000/bids', {

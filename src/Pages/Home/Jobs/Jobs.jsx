@@ -9,7 +9,7 @@ const Jobs = () => {
   const [selectCategorie, setSelectCategorie] = useState(null);
   const navigate = useNavigate()
 
-  const categoris = ["Web development", "Digital marketing", "Graphics design"];
+  const categoris = ["Web-development", "Digital-marketing", "Graphics-design"];
 
   //load jobs data
   useEffect(() => {
