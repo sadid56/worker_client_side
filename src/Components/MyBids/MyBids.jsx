@@ -61,16 +61,17 @@ const MyBids = () => {
         <h3 className="text-3xl font-bold text-center my-5">My Bids</h3>
 
         <div className="flex justify-center">
-
           <div className="form-control">
             <label className="input-group">
-              <select value={sortValu}
-            onChange={(e) => setSortValue(e.target.value)} className="input input-bordered input-success w-full max-w-xs">
-              <option disabled selected>
-              Sort By
-            </option>
-            <option value="complete">Completed</option>
-            <option value="cancele">Canceled</option>
+              <select
+                value={sortValu}
+                onChange={(e) => setSortValue(e.target.value)}
+                className="input input-bordered input-success w-full max-w-xs">
+                <option disabled selected>
+                  Sort By
+                </option>
+                <option value="complete">Ascending</option>
+                <option value="cancele">Descending</option>
               </select>
               <span
                 onClick={HandleSort}
@@ -94,7 +95,7 @@ const MyBids = () => {
               </tr>
             </thead>
             <tbody>
-              {bids.map((bid, index) => (
+              {bids?.map((bid, index) => (
                 <tr key={bid._id}>
                   <th>{index + 1}</th>
                   <td className="text-xl font-semibold">{bid?.job_title}</td>

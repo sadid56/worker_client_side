@@ -78,7 +78,7 @@ const BidRequests = () => {
               </tr>
             </thead>
             <tbody>
-              {bids.map((bid, index) => (
+              {bids?.map((bid, index) => (
                 <tr key={bid._id}>
                   <th className="text-xl font-semibold">{index + 1}</th>
                   <td className="text-xl font-semibold">{bid?.job_title}</td>

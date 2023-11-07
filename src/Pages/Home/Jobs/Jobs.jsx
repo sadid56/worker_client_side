@@ -1,9 +1,12 @@
 /* eslint-disable react/jsx-key */
-import { useEffect, useState } from "react";
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Jobs = () => {
+  const {user} = useContext(AuthContext)
   const [loadjobs, setLoadJobs] = useState([]);
   const [jobs, setJobs] = useState([]);
   const [selectCategorie, setSelectCategorie] = useState("Web-development");
@@ -13,15 +16,18 @@ const Jobs = () => {
 
   //load jobs data
   useEffect(() => {
-    fetch("http://localhost:5000/jobs")
-      .then((res) => res.json())
-      .then((data) => setLoadJobs(data));
-  }, []);
+    axios.get(`http://localhost:5000/jobs`)
+    .then(res => setLoadJobs(res.data))
+    .catch(error => console.log(error.message))
+    // fetch("http://localhost:5000/jobs", {credentials: 'include'})
+    //   .then((res) => res.json())
+    //   .then((data) => setLoadJobs(data));
+  }, [user?.email]);
   // console.log(jobs);
 
   useEffect(() => {
     if (selectCategorie) {
-      const filterData = loadjobs.filter(
+      const filterData = loadjobs?.filter(
         (job) => job?.category === selectCategorie
       );
       setJobs(filterData);
@@ -55,7 +61,7 @@ const Jobs = () => {
           <TabPanel key={category}>
             <div className="grid md:grid-cols-2 px-5 lg:grid-cols-3 gap-5 max-w-6xl mx-auto mb-5">
               {jobs.map((job) => (
-                <div className="card mt-5 rounded-md bg-[#ecf2f0] shadow-xl">
+                <div key={job._id} className="card mt-5 rounded-md bg-[#ecf2f0] shadow-xl">
                   <div className="card-body">
                     <h2 className="card-title">{job?.job_title}</h2>
                     <h4 className="text-gray-500 font-medium">

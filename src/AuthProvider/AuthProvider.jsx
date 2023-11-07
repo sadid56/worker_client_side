@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../firebase/firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -25,43 +26,66 @@ const AuthProvider = ({ children }) => {
   };
 
   //create user
-  const createUser = (email, password)=>{
-    setLoading(true)
-    return createUserWithEmailAndPassword(auth, email, password)
-  }
+  const createUser = (email, password) => {
+    setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
 
   // update user profile
-  const profileUpdate = (name, photo)=>{
-    setLoading(true)
+  const profileUpdate = (name, photo) => {
+    setLoading(true);
     return updateProfile(auth.currentUser, {
-        displayName: name,
-        photoURL: photo
-    })
-  }
+      displayName: name,
+      photoURL: photo,
+    });
+  };
 
   //login
-  const loginUser = (email, password)=>{
-    setLoading(true)
-    return signInWithEmailAndPassword(auth, email, password)
-  }
+  const loginUser = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
   //log Out user
-  const logOut = ()=>{
-    setLoading(true)
-    return signOut(auth)
-  }
-
-
+  const logOut = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
 
   //current user observe
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setLoading(false);
       setUser(currentUser);
+
+      // jwt token related
+      const userEmail = currentUser?.email || user?.email;
+      const loggerUser = {email: userEmail}
+      if(userEmail){
+        axios.post('http://localhost:5000/jwt',loggerUser, {withCredentials: true})
+        .then(res => console.log(res.data))
+        .catch(error => {
+          console.log(error.message);
+        })
+      }
+      else{
+        axios.post('http://localhost:5000/logOut', loggerUser, {withCredentials: true})
+        .then(res => console.log(res.data))
+        .catch(error => console.log(error.message))
+      }
+
     });
     return () => unSubscribe();
-  }, []);
-  const authInfo = { user, loading, googleLogin,createUser,profileUpdate,loginUser, logOut,  };
+  }, [user?.email]);
+  const authInfo = {
+    user,
+    loading,
+    googleLogin,
+    createUser,
+    profileUpdate,
+    loginUser,
+    logOut,
+  };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
