@@ -34,7 +34,7 @@ const Routers = createBrowserRouter([
         path: "/job-details/:id",
         element: <PrivateRoute><JobsDetails /></PrivateRoute>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/jobs/${params.id}`),
+          fetch(`https://assignment11-server-side-962kmdaat-sadids-projects.vercel.app/jobs/${params.id}`),
       },
       {
         path: "/add-job",
@@ -48,7 +48,7 @@ const Routers = createBrowserRouter([
         path: "/update-jobs/:id",
         element: <UpdateModal />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/jobs/${params.id}`),
+          fetch(`https://assignment11-server-side-962kmdaat-sadids-projects.vercel.app/jobs/${params.id}`),
       },
       {
         path: "/my-bids",

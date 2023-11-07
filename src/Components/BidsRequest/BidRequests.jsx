@@ -7,7 +7,7 @@ const BidRequests = () => {
   const [bids, setBids] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/bids`)
+    fetch(`https://assignment11-server-side-962kmdaat-sadids-projects.vercel.app/bids`)
       .then((res) => res.json())
       .then((data) => setBids(data));
   }, []);
@@ -15,7 +15,7 @@ const BidRequests = () => {
   const handleAccept = (id) => {
     // console.log('updare');
 
-    fetch(`http://localhost:5000/bids/${id}`, {
+    fetch(`https://assignment11-server-side-962kmdaat-sadids-projects.vercel.app/bids/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -35,7 +35,7 @@ const BidRequests = () => {
       });
   };
   const hanldeReject = (id) => {
-    fetch(`http://localhost:5000/bids/${id}`, {
+    fetch(`https://assignment11-server-side-962kmdaat-sadids-projects.vercel.app/bids/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

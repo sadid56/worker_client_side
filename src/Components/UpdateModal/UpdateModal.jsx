@@ -25,7 +25,7 @@ const UpdateModal = () => {
         const UpdateJob = {job_title, minPrice, maxPrice, deadline, short_description,category}
         // console.log(addJob);
         // console.log(addJob);
-        fetch(`http://localhost:5000/jobs/${job?._id}`, {
+        fetch(`https://assignment11-server-side-962kmdaat-sadids-projects.vercel.app/jobs/${job?._id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

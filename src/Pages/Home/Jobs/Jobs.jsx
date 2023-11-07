@@ -16,10 +16,10 @@ const Jobs = () => {
 
   //load jobs data
   useEffect(() => {
-    axios.get(`http://localhost:5000/jobs`)
+    axios.get(`https://assignment11-server-side-962kmdaat-sadids-projects.vercel.app/jobs`)
     .then(res => setLoadJobs(res.data))
     .catch(error => console.log(error.message))
-    // fetch("http://localhost:5000/jobs", {credentials: 'include'})
+    // fetch("https://assignment11-server-side-962kmdaat-sadids-projects.vercel.app/jobs", {credentials: 'include'})
     //   .then((res) => res.json())
     //   .then((data) => setLoadJobs(data));
   }, [user?.email]);

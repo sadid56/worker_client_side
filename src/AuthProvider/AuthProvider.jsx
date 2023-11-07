@@ -62,14 +62,14 @@ const AuthProvider = ({ children }) => {
       const userEmail = currentUser?.email || user?.email;
       const loggerUser = {email: userEmail}
       if(userEmail){
-        axios.post('http://localhost:5000/jwt',loggerUser, {withCredentials: true})
+        axios.post('https://assignment11-server-side-962kmdaat-sadids-projects.vercel.app/jwt',loggerUser, {withCredentials: true})
         .then(res => console.log(res.data))
         .catch(error => {
           console.log(error.message);
         })
       }
       else{
-        axios.post('http://localhost:5000/logOut', loggerUser, {withCredentials: true})
+        axios.post('https://assignment11-server-side-962kmdaat-sadids-projects.vercel.app/logOut', loggerUser, {withCredentials: true})
         .then(res => console.log(res.data))
         .catch(error => console.log(error.message))
       }

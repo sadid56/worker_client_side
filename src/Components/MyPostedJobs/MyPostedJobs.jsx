@@ -12,7 +12,7 @@ const MyPostedJobs = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/jobs?email=${user?.email}`)
+    fetch(`https://assignment11-server-side-962kmdaat-sadids-projects.vercel.app/jobs?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setJobs(data));
   }, [user?.email]);
@@ -28,7 +28,7 @@ const MyPostedJobs = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/jobs/${id}`, {
+        fetch(`https://assignment11-server-side-962kmdaat-sadids-projects.vercel.app/jobs/${id}`, {
           method: "delete",
         })
           .then((res) => res.json())

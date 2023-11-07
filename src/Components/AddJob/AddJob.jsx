@@ -27,7 +27,7 @@ const AddJob = () => {
 
         const addJob = {email, job_title, minPrice, maxPrice, deadline, short_description,category}
         // console.log(addJob);
-        fetch('http://localhost:5000/jobs',{
+        fetch('https://assignment11-server-side-962kmdaat-sadids-projects.vercel.app/jobs',{
             method: 'post',
             headers: {
                 'content-type': 'application/json'
