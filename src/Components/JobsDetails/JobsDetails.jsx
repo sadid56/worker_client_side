@@ -21,7 +21,7 @@ const JobsDetails = () => {
         const bidNow = {price, deadline, email, buyerEamil, job_title:job?.job_title,status: 'pending'}
         // console.log(bidNow);
 
-        fetch('https://assignment11-server-side-962kmdaat-sadids-projects.vercel.app/bids', {
+        fetch('https://assignment11-server-side-alpha.vercel.app/bids', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
