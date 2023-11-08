@@ -76,7 +76,7 @@ const UpdateModal = () => {
                 </label>
                 <input
                   name="email"
-                  disabled
+                  readOnly
                   defaultValue={job?.email}
                   required
                   type="email"

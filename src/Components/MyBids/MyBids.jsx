@@ -39,12 +39,12 @@ const MyBids = () => {
 
   const HandleSort = () => {
     if (sortValu === "complete") {
-      fetch(`https://assignment11-server-side-alpha.vercel.app/bids?sortField=status&sortOrder=asc`)
+      fetch(`https://assignment11-server-side-alpha.vercel.app/bids?email=${user?.email}&sortField=status&sortOrder=asc`)
         .then((res) => res.json())
         .then((data) => setBids(data));
     }
     if (sortValu === "cancele") {
-      fetch(`https://assignment11-server-side-alpha.vercel.app/bids?sortField=status&sortOrder=desc`)
+      fetch(`https://assignment11-server-side-alpha.vercel.app/bids?email=${user?.email}&sortField=status&sortOrder=desc`)
         .then((res) => res.json())
         .then((data) => setBids(data));
     }

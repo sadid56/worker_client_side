@@ -79,6 +79,7 @@ const AddJob = () => {
                 </label>
                 <input
                   name="email"
+                  readOnly
                   defaultValue={user?.email}
                   required
                   type="email"

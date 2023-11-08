@@ -1,9 +1,18 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useEffect } from "react";
 import { useState } from "react";
+import Aos from "aos";
+import 'aos/dist/aos.css';
 
 const Rivew = () => {
   const [rivews, setRivews] = useState([]);
+
+  useEffect(() => {
+    Aos.init({
+      duration: 1500, 
+      // offset: 200,
+    });
+  }, []);
 
   useEffect(() => {
     fetch("/review.json")
@@ -19,7 +28,7 @@ const Rivew = () => {
         </div>
       <div className="grid px-5 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
         {rivews.map((rivew) => (
-          <div
+          <div data-aos="fade-left" 
             key={rivew.id}
             className="relative flex w-full flex-col rounded-xl border p-5 bg-white">
             <div className="relative flex items-center gap-4 pt-0 pb-8 mx-0 mt-4 overflow-hidden text-gray-700 bg-transparent shadow-none rounded-xl bg-clip-border">

@@ -7,7 +7,7 @@ import Subscribe from "../subscribe/Subscribe";
 
 const Home = () => {
     return ( 
-        <div>
+        <div className="overflow-x-hidden">
             <Helmet>
                 <title>Worker | Home</title>
             </Helmet>

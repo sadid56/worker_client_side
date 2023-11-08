@@ -6,6 +6,9 @@ import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { Helmet } from "react-helmet";
 import toast from "react-hot-toast";
+import Aos from "aos";
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 const Registration = () => {
   const { createUser, profileUpdate } = useContext(AuthContext);
@@ -40,6 +43,13 @@ const Registration = () => {
       });
   };
 
+  useEffect(() => {
+    Aos.init({
+      duration: 1500, 
+      // offset: 200,
+    });
+  }, []);
+
   return (
     <div>
       <Helmet>
@@ -50,12 +60,12 @@ const Registration = () => {
       <h3 className="text-4xl text-center font-bold border-b-2 border-[#005d45] w-fit mx-auto mt-5">
         Registration Now
       </h3>
-      <div className="hero">
+      <div  className="hero overflow-x-hidden">
         <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="">
-            <img src={registerPng} className="max-w-md" alt="" />
+          <div data-aos='fade-left' className="">
+            <img src={registerPng} className="md:max-w-md" alt="" />
           </div>
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl">
+          <div data-aos='fade-right' className="card flex-shrink-0 w-full max-w-sm shadow-2xl">
             <form onSubmit={handleRegistration} className="card-body">
               <div className="form-control">
                 <label className="label">

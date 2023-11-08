@@ -99,8 +99,7 @@ const JobsDetails = () => {
                 </label>
                 <input
                   name="email"
-                  required
-                  disabled
+                  readOnly
                   defaultValue={user?.email}
                   type="email"
                   placeholder="Your Email"
@@ -114,7 +113,7 @@ const JobsDetails = () => {
                 <input
                   name="buyerEamil"
                   defaultValue={job?.email}
-                  disabled
+                  readOnly
                   type="email"
                   placeholder="Buyer Email"
                   className="input input-bordered input-success w-full max-w-xs"

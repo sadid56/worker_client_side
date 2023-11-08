@@ -1,8 +1,9 @@
-# React + Vite
+ ## five futures in my project
+ - I have create a job marketplace website, my website name worker
+ - Total three categories in my website, web-development, digital-marketing and graphics-design
+ - You found a your choice job and bid now
+ - And you need a worker to simply add your job.
+ - You add to job after this job edit and delete it.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ ### website Live link
+ # https://assignment-11-96d26.web.app/

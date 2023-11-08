@@ -5,6 +5,8 @@ import Navber from "../../shared/Navber/Navber";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
+import Aos from "aos";
+import 'aos/dist/aos.css';
 
 const MyPostedJobs = () => {
   const { user } = useContext(AuthContext);
@@ -48,6 +50,13 @@ const MyPostedJobs = () => {
     });
   };
 
+  useEffect(() => {
+    Aos.init({
+      duration: 1000, 
+      // offset: 200,
+    });
+  }, []);
+
   return (
     <div>
       <Helmet>
@@ -59,9 +68,9 @@ const MyPostedJobs = () => {
         My added total jobs: {jobs.length}
       </h3>
 
-      <div className="grid px-5 md:grid-cols-2 gap-5 max-w-6xl mx-auto mt-10">
+      <div className="grid px-5 md:grid-cols-2 gap-5 max-w-6xl mx-auto mt-10 overflow-x-hidden">
         {jobs.map((job) => (
-          <div
+          <div data-aos='fade-right'
             key={job._id}
             className="flex justify-between bg-[#fde7de] p-5 rounded-md shadow-md">
             <div className="space-y-2">

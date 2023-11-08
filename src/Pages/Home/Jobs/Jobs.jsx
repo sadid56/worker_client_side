@@ -4,6 +4,8 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
+import Aos from "aos";
+import 'aos/dist/aos.css';
 
 const Jobs = () => {
   const {user} = useContext(AuthContext)
@@ -11,13 +13,23 @@ const Jobs = () => {
   const [jobs, setJobs] = useState([]);
   const [selectCategorie, setSelectCategorie] = useState("Web-development");
   const navigate = useNavigate()
+  const [loading , isLoading] = useState(true)
 
+  useEffect(() => {
+    Aos.init({
+      duration: 1000, 
+      // offset: 200,
+    });
+  }, []);
   const categoris = ["Web-development", "Digital-marketing", "Graphics-design"];
 
   //load jobs data
   useEffect(() => {
     axios.get(`https://assignment11-server-side-alpha.vercel.app/jobs`)
-    .then(res => setLoadJobs(res.data))
+    .then(res => {
+      setLoadJobs(res.data)
+      isLoading(false)
+    })
     .catch(error => console.log(error.message))
     // fetch("https://assignment11-server-side-alpha.vercel.app/jobs", {credentials: 'include'})
     //   .then((res) => res.json())
@@ -31,6 +43,7 @@ const Jobs = () => {
         (job) => job?.category === selectCategorie
       );
       setJobs(filterData);
+      isLoading(false)
     }
   }, [selectCategorie, loadjobs]);
 
@@ -59,9 +72,10 @@ const Jobs = () => {
 
         {categoris.map((category) => (
           <TabPanel key={category}>
-            <div className="grid md:grid-cols-2 px-5 lg:grid-cols-3 gap-5 max-w-6xl mx-auto mb-5">
+            {
+              loading ? <p className="text-center text-2xl font-medium my-10">Loading...</p> : <div className="grid md:grid-cols-2 px-5 lg:grid-cols-3 gap-5 max-w-6xl mx-auto mb-5">
               {jobs.map((job) => (
-                <div key={job._id} className="card mt-5 rounded-md bg-[#ecf2f0] shadow-xl">
+                <div  data-aos='fade-right' key={job._id} className="card mt-5 rounded-md bg-[#ecf2f0] shadow-xl">
                   <div className="card-body">
                     <h2 className="card-title">{job?.job_title}</h2>
                     <h4 className="text-gray-500 font-medium">
@@ -82,6 +96,7 @@ const Jobs = () => {
                 </div>
               ))}
             </div>
+            }
           </TabPanel>
         ))}
       </Tabs>
