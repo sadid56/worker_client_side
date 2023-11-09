@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import Navber from "../shared/Navber/Navber";
-import loginPng from "../assets/images/login.png";
+// import loginPng from "../assets/images/login.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa6";
 import { useContext } from "react";
@@ -10,6 +10,8 @@ import toast from "react-hot-toast";
 import Aos from "aos";
 import 'aos/dist/aos.css';
 import { useEffect } from "react";
+import animation from '../assets/lottie-animation/login.json'
+import Lottie from "lottie-react";
 
 const Login = () => {
     const {googleLogin, loginUser} = useContext(AuthContext)
@@ -67,8 +69,9 @@ const Login = () => {
       </h3>
       <div className="hero overflow-x-hidden">
         <div className="hero-content flex-col lg:flex-row-reverse">
-          <div data-aos='fade-left' className="">
-            <img src={loginPng} className="md:max-w-md" alt="" />
+          <div data-aos='fade-left' className="md:max-w-md">
+            {/* <img src={loginPng} className="md:max-w-md" alt="" /> */}
+            <Lottie animationData={animation} loop={true}/>
           </div>
           <div data-aos='fade-right' className="card flex-shrink-0 w-full max-w-sm shadow-2xl">
             <form onSubmit={handleLogin}  className="card-body">

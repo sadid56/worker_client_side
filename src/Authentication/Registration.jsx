@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Link, useNavigate } from "react-router-dom";
 import Navber from "../shared/Navber/Navber";
-import registerPng from "../assets/images/register.png";
+// import registerPng from "../assets/images/register.png";
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { Helmet } from "react-helmet";
@@ -9,6 +9,8 @@ import toast from "react-hot-toast";
 import Aos from "aos";
 import 'aos/dist/aos.css';
 import { useEffect } from "react";
+import lottieAnimation from '../assets/lottie-animation/registation.json'
+import Lottie from "lottie-react";
 
 const Registration = () => {
   const { createUser, profileUpdate } = useContext(AuthContext);
@@ -62,8 +64,9 @@ const Registration = () => {
       </h3>
       <div  className="hero overflow-x-hidden">
         <div className="hero-content flex-col lg:flex-row-reverse">
-          <div data-aos='fade-left' className="">
-            <img src={registerPng} className="md:max-w-md" alt="" />
+          <div data-aos='fade-left' className="md:max-w-lg">
+            {/* <img src={registerPng} className="md:max-w-md" alt="" /> */}
+            <Lottie animationData={lottieAnimation} loop={true}></Lottie>
           </div>
           <div data-aos='fade-right' className="card flex-shrink-0 w-full max-w-sm shadow-2xl">
             <form onSubmit={handleRegistration} className="card-body">

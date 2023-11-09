@@ -4,6 +4,9 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
+import { useEffect } from "react";
+import Aos from "aos";
+import 'aos/dist/aos.css';
 
 const AddJob = () => {
     const {user} = useContext(AuthContext)
@@ -53,6 +56,12 @@ const AddJob = () => {
         // console.log(e.target.value);
         
     }
+    useEffect(() => {
+      Aos.init({
+        duration: 1500, 
+        // offset: 200,
+      });
+    }, []);
     return ( 
         <div>
           <Helmet>
@@ -60,8 +69,8 @@ const AddJob = () => {
           </Helmet>
 
             <Navber/>
-             <div className="max-w-2xl mx-auto">
-             <form onSubmit={handleAddJob} className="card-body">
+             <div className="max-w-2xl mx-auto overflow-x-hidden">
+             <form data-aos="zoom-in" onSubmit={handleAddJob} className="card-body">
             <h3 className="text-2xl font-bold text-center">Add Job</h3>
 
           <div className="flex justify-end">
