@@ -57,7 +57,7 @@ const Routers = createBrowserRouter([
       {
         path: "/bids-requests",
         element:<PrivateRoute> <BidRequests /></PrivateRoute>,
-        // loader: ()=> fetch()
+        // loader: ()=> fetch(),
       },
     ],
   },
