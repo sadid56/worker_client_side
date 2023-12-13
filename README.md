@@ -5,5 +5,8 @@
  - And you need a worker to simply add your job.
  - You add to job after this job edit and delete it.
 
+## technologies
+- react, mongodb, expressjs, jwt, firebase
+
  ### website Live link
  # https://assignment-11-96d26.web.app/
